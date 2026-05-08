@@ -35,14 +35,6 @@ class CausalWellLogDataset(Dataset):
 
         # target: clean data at the end of the window (end-1)
         y = self.clean_df[end-1] # shape (2,)
-        
+
         return torch.from_numpy(x), torch.from_numpy(y)
     
-
-
-
-
-
-        x = self.data.iloc[idx:idx + self.window_size].drop(columns=[self.target_col]).values
-        y = self.data.iloc[idx + self.window_size][self.target_col]
-        return torch.tensor(x, dtype=torch.float32), torch.tensor(y, dtype=torch.float32)
